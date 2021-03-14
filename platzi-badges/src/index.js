@@ -7,9 +7,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Badge from './components/Badge.jsx'
+//import Badge from './components/Badge.jsx'
 import 'bootstrap/dist/css/bootstrap.css';
 import './global.css';
+//import BadgeNew from './pages/BadgeNew'
+import Badges from './pages/Badges'
 
 //const element = <h1>Hello, Platzi Badges!</h1>;
 
@@ -18,11 +20,4 @@ const container = document.getElementById('app');
 
 
 // ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(<Badge 
-    firstName="Javier" 
-    lastName="Saviñon" 
-    jobTitle="Frontend Engineer" 
-    twitter="@mengeroshi"
-    avatar="https://www.gravatar.com/avatar?d=identicon"
-
-    />, container);
+ReactDOM.render(<Badges />,container);
