@@ -10,10 +10,10 @@ function BadgeHome() {
 		<div className="Home">
 			<dir className="col-text">
 				<img src={logo} alt="Platzi conf logo"/>
-				<p>
+				<div>
 					<h1>BADGE MANAGEMENT SYSTEM</h1>
 					<Link className="btn btn-primary" to="/badges">Start</Link>
-				</p>
+				</div>
 			</dir>
 			<dir className="col-img">
 				<img src={astro} alt="Astronauta"/>
