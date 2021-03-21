@@ -2,19 +2,7 @@ import React from 'react';
 
 
 class BadgeForm extends React.Component{
-    /*state ={
-        firstName: '',
-        lastName: '',
-        email: '',
-        jobTitle: '',
-        twitter: ''
-    }; */
-   /*handleChange = e =>{
-        this.setState({
-            [e.target.name]: e.target.value,
-        })
-    } */
-    
+
     handleClick = e =>{
         console.log('clicked');
     }
@@ -24,10 +12,9 @@ class BadgeForm extends React.Component{
         console.log(this.state)
     }*/
     render(){
-        const {firstName, lastName, email, jobTitle, twiiter} = this.props.formValues
+        const {firstName, lastName, email, jobTitle, twitter} = this.props.formValues
         return(
             <div>
-                <h1>New Attendant</h1>
                 <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
@@ -76,10 +63,11 @@ class BadgeForm extends React.Component{
                         className="form-control" 
                         type="text" 
                         name="twitter"
-                        value={twiiter}
+                        value={twitter}
                         />
                     </div>
                     <button /*type="button"*/ onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    {this.props.error && <p className="text-danger">{this.props.error.message}</p> }
                 </form>
             </div>
         )
