@@ -5,12 +5,35 @@ import './styles/Badge.css';
 import {Link} from 'react-router-dom';
 import Gravatar from './Gravatar';
 
-function BadgesList(props){
 
+function useSearchBadges(badges){
+    const [query, setQuery] = React.useState('');
+    const [filteredBadges, setfilteredBadges] = React.useState(badges);
+    
+        React.useMemo(()=>{
+            const result = badges.filter(badge => 
+                `${badge.firstName} ${badge.lastName }`.toLowerCase().includes(query.toLowerCase()))
+            setfilteredBadges(result)
+        }, [badges, query])
+    
+    return {query,setQuery, filteredBadges}
+}
+
+function BadgesList(props){
         const badges = props.badges;
-        if(badges.length === 0){
+       const {query, setQuery, filteredBadges} = useSearchBadges(badges)
+        if(filteredBadges.length === 0){
             return(
                 <div>
+                    <div className="form-group">
+                        <label>FiterBadges</label>
+                        <input type="text" className="form-control"
+                            value={query}
+                            onChange={(e)=>{
+                                setQuery(e.target.value)
+                            }}
+                        />
+                    </div>
                     <h3>No Badges were found</h3>
                     <Link className="btn btn-primary" to="/badges/new">
                         Create New Badge
@@ -21,11 +44,16 @@ function BadgesList(props){
         return(
             <React.Fragment>
                 <div className="form-group">
-                <label>FiterBadges</label>
-                <input type="text" className="form-control"/>
+                    <label>FiterBadges</label>
+                    <input type="text" className="form-control"
+                        value={query}
+                        onChange={(e)=>{
+                            setQuery(e.target.value)
+                        }}
+                    />
                 </div>
                 <ul className="list-unstyled">
-                {badges.map(badge=>{
+                {filteredBadges.map(badge=>{
                     return(
                         <li  key={badge.id}>
                             <Link className="badge_item text-reset  text-decoration-none" to={`badges/${badge.id}`}>
