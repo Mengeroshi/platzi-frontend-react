@@ -27,3 +27,4 @@ let helloUser: any;
 helloUser = 'hello obo';
 userName = (helloUser as string).substring(6);
 console.log(userName);
+
