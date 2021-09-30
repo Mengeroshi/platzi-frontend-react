@@ -6,6 +6,7 @@ import TodoList from "../TodoList/index";
 import TodoItem from "../TodoItem";
 import CreateTodoButton from "../CreateTodoButton";
 import {Modal} from '../Modal';
+import TodoForm from "../TodoForm";
 
 
 
@@ -41,7 +42,7 @@ const AppUI = () => {
             </TodoList>
             {!!openModal &&(
                 <Modal>
-                    <p>Teletransportacion</p>
+                    <TodoForm/>
                 </Modal>
             )
             }
