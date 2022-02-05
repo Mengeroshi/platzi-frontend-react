@@ -3,6 +3,7 @@ import '../styles/components/Checkout.css';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from '../icons/TrashIcon';
 import { AppContext } from '../context/AppContext';
+import {Helmet} from  'react-helmet';
 
 const Checkout = () => {
   const { state, removeFromCart } = React.useContext(AppContext);
@@ -20,13 +21,19 @@ const Checkout = () => {
   };
 
   return (
-    <div className="Checkout">
+    <>
+      <Helmet>
+        <title>Lista de Pedidos</title>
+      </Helmet>
+      <div className="Checkout">
       <div className="Checkout-content">
         <h3>
           {cart.length <= 0 ? 'No hay nada papulardo' : 'Lista de Pedidos'}
         </h3>
 
-        {cart.length <= 0 ? (<h1>No hay nada</h1>) : (
+        {cart.length <= 0 ? (
+          <h1>No hay nada</h1>
+        ) : (
           cart.map((product, i) => {
             return (
               <div key={product.id + i} className="Checkout-item">
@@ -49,6 +56,7 @@ const Checkout = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

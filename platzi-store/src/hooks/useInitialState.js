@@ -7,7 +7,7 @@ const useInitialState = () => {
   const addToCart = (payload) => {
     setState({
       ...state,
-      buyer:[],
+      buyer: [],
       cart: [...state.cart, payload],
     });
   };
@@ -18,19 +18,19 @@ const useInitialState = () => {
       cart: state.cart.filter((item, i) => i !== payload),
     });
   };
-  
-  const addToBuyer = payload =>{
+
+  const addToBuyer = (payload) => {
     setState({
       ...state,
       buyer: [...state.buyer, payload],
-    })
-  }
-  const addNewOrder = payload =>{
+    });
+  };
+  const addNewOrder = (payload) => {
     setState({
       ...state,
-      orders:[...state.orders, payload]
-    })
-  }
+      orders: [...state.orders, payload],
+    });
+  };
 
   return {
     addToCart,
@@ -38,7 +38,6 @@ const useInitialState = () => {
     addToBuyer,
     addNewOrder,
     state,
-
   };
 };
 
