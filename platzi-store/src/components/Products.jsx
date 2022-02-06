@@ -4,8 +4,8 @@ import { Product } from './Product';
 import { AppContext } from '../context/AppContext';
 
 const Products = () => {
-  const { state, addToCart } = React.useContext(AppContext);
-  const { products } = state;
+  const { products, addToCart } = React.useContext(AppContext);
+  
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -17,8 +17,9 @@ const Products = () => {
           return (
             <Product
               key={product.id}
-              product={product}
+              product={product.attributes}
               handleAddToCart={handleAddToCart}
+              id = {product.id}
             />
           );
         })}

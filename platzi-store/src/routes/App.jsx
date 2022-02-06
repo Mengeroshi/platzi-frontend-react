@@ -12,9 +12,10 @@ import { useInitialState } from '../hooks/useInitialState';
 
 const App = () => {
   const initialState = useInitialState();
-
+  const isEmpty = Object.keys(initialState.state).length;
   return (
-    <AppContext.Provider value={initialState}>
+    <>
+    {isEmpty > 0 ? (<AppContext.Provider value={initialState}>
       <BrowserRouter>
         <Layout>
           <Routes>
@@ -27,7 +28,10 @@ const App = () => {
           </Routes>
         </Layout>
       </BrowserRouter>
-    </AppContext.Provider>
+    </AppContext.Provider>): 
+    <h1>Loading</h1> }
+    
+    </>
   );
 };
 

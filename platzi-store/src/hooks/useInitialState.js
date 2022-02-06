@@ -1,8 +1,23 @@
 import React from 'react';
 import initialState from '../initialState';
 
+const API = 'http://localhost:3006/api/productss?populate=%2A';
+
 const useInitialState = () => {
   const [state, setState] = React.useState(initialState);
+  const [products, setProducts] = React.useState([]);
+
+  React.useEffect(()=>{
+
+    const fun = async () =>{
+      const response = await fetch(API);
+      const data = await response.json();
+      const obo = await data.data;
+      setProducts(obo);
+      console.log(obo)
+    }
+    fun();
+  }, [])
 
   const addToCart = (payload) => {
     setState({
@@ -38,6 +53,7 @@ const useInitialState = () => {
     addToBuyer,
     addNewOrder,
     state,
+    products
   };
 };
 

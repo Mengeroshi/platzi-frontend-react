@@ -1,9 +1,17 @@
 import React from 'react';
 
-const Product = ({ product, handleAddToCart }) => {
+const Product = ({ product, id, handleAddToCart  }) => {
+  const productObj ={
+    id: id,
+    title: product.title,
+    image: `http://localhost:3006${product.image.data[0].attributes.url}`,
+    price: product.price,
+    description: product.description,
+  }
+
   return (
     <div className="Products-item">
-      <img src={product.image} alt={product.title} />
+      <img src={productObj.image} alt={product.title} />
       <div className="Product-Item-info">
         <h2>
           {product.title}
@@ -11,8 +19,7 @@ const Product = ({ product, handleAddToCart }) => {
         </h2>
         <span>{product.description}</span>
       </div>
-      <button type="button" onClick={() => handleAddToCart(product)}>
-        {' '}
+      <button type="button" onClick={() => handleAddToCart(productObj)}>
         Comprar
       </button>
     </div>
